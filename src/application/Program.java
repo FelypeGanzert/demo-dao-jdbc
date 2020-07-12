@@ -21,7 +21,8 @@ public class Program {
 		
 		System.out.println("\n===== TEST 2: seller findByDepartment");
 		List<Seller> list = new ArrayList<>();
-		list = sellerDao.findByDepartment(new Department(2, null));
+		Department dep = new Department(2, null);
+		list = sellerDao.findByDepartment(dep);
 		//list.get(0).getDepartment().setName("Changed");
 		for(Seller s : list) {
 			System.out.println(s);
@@ -34,5 +35,9 @@ public class Program {
 			System.out.println(s);
 		}
 		
+		System.out.println("\n===== TEST 4: seller insert");
+		Seller newSeller = new Seller(null, "Joana", "joana@gmail.com", new Date(), 6000.0, dep);
+		sellerDao.insert(newSeller);
+		System.out.println("Inserted! New id = " + newSeller.getId());
 	}
 }
